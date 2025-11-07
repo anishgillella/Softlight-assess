@@ -1,0 +1,77 @@
+{
+  "task": "Can you filter issues by medium priority in Linear",
+  "app": "Linear",
+  "executed_at": "2025-11-06T21:31:57.364142",
+  "screenshots_count": 9,
+  "screenshots": [
+    {
+      "step": 0,
+      "name": "step_1",
+      "timestamp": "2025-11-06T21:31:57.361068",
+      "file": "outputs/20251106_213132/01_step_1.png"
+    },
+    {
+      "step": 1,
+      "name": "step_2",
+      "timestamp": "2025-11-06T21:31:57.361715",
+      "file": "outputs/20251106_213132/02_step_2.png"
+    },
+    {
+      "step": 2,
+      "name": "step_3",
+      "timestamp": "2025-11-06T21:31:57.362042",
+      "file": "outputs/20251106_213132/03_step_3.png"
+    },
+    {
+      "step": 3,
+      "name": "step_4",
+      "timestamp": "2025-11-06T21:31:57.362423",
+      "file": "outputs/20251106_213132/04_step_4.png"
+    },
+    {
+      "step": 4,
+      "name": "step_5",
+      "timestamp": "2025-11-06T21:31:57.362774",
+      "file": "outputs/20251106_213132/05_step_5.png"
+    },
+    {
+      "step": 5,
+      "name": "step_6",
+      "timestamp": "2025-11-06T21:31:57.363073",
+      "file": "outputs/20251106_213132/06_step_6.png"
+    },
+    {
+      "step": 6,
+      "name": "step_7",
+      "timestamp": "2025-11-06T21:31:57.363380",
+      "file": "outputs/20251106_213132/07_step_7.png"
+    },
+    {
+      "step": 7,
+      "name": "step_8",
+      "timestamp": "2025-11-06T21:31:57.363693",
+      "file": "outputs/20251106_213132/08_step_8.png"
+    },
+    {
+      "step": 8,
+      "name": "step_9",
+      "timestamp": "2025-11-06T21:31:57.364007",
+      "file": "outputs/20251106_213132/09_step_9.png"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_tokens": 0,
+    "total_tokens": 0
+  },
+  "cost": {
+    "estimated_cost_usd": 0.0,
+    "pricing": {
+      "input": 0.5,
+      "output": 3.0,
+      "cached": 0.1
+    }
+  },
+  "cookies_stored_in": "/Users/anishgillella/.browser-use-chrome"
+}

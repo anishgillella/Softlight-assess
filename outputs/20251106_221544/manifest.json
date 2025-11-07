@@ -1,0 +1,239 @@
+{
+  "task": "In Monday.com, create a new bug item with the following details: Title='Login button not responding on mobile devices', Description='Users on iOS and Android cannot click the login button', Status='Not Started', Priority='High', add a Due Date for 2025-11-15, and assign it to yourself",
+  "app": "Monday.com",
+  "executed_at": "2025-11-06T22:17:47.511716",
+  "screenshots_count": 36,
+  "screenshots": [
+    {
+      "step": 0,
+      "name": "step_1",
+      "timestamp": "2025-11-06T22:17:47.484260",
+      "file": "outputs/20251106_221544/01_step_1.png"
+    },
+    {
+      "step": 1,
+      "name": "step_2",
+      "timestamp": "2025-11-06T22:17:47.484948",
+      "file": "outputs/20251106_221544/02_step_2.png"
+    },
+    {
+      "step": 2,
+      "name": "step_3",
+      "timestamp": "2025-11-06T22:17:47.485256",
+      "file": "outputs/20251106_221544/03_step_3.png"
+    },
+    {
+      "step": 3,
+      "name": "step_4",
+      "timestamp": "2025-11-06T22:17:47.485750",
+      "file": "outputs/20251106_221544/04_step_4.png"
+    },
+    {
+      "step": 4,
+      "name": "step_5",
+      "timestamp": "2025-11-06T22:17:47.486242",
+      "file": "outputs/20251106_221544/05_step_5.png"
+    },
+    {
+      "step": 5,
+      "name": "step_6",
+      "timestamp": "2025-11-06T22:17:47.486758",
+      "file": "outputs/20251106_221544/06_step_6.png"
+    },
+    {
+      "step": 6,
+      "name": "step_7",
+      "timestamp": "2025-11-06T22:17:47.487601",
+      "file": "outputs/20251106_221544/07_step_7.png"
+    },
+    {
+      "step": 7,
+      "name": "step_8",
+      "timestamp": "2025-11-06T22:17:47.488572",
+      "file": "outputs/20251106_221544/08_step_8.png"
+    },
+    {
+      "step": 8,
+      "name": "step_9",
+      "timestamp": "2025-11-06T22:17:47.489641",
+      "file": "outputs/20251106_221544/09_step_9.png"
+    },
+    {
+      "step": 9,
+      "name": "step_10",
+      "timestamp": "2025-11-06T22:17:47.490371",
+      "file": "outputs/20251106_221544/10_step_10.png"
+    },
+    {
+      "step": 10,
+      "name": "step_11",
+      "timestamp": "2025-11-06T22:17:47.490901",
+      "file": "outputs/20251106_221544/11_step_11.png"
+    },
+    {
+      "step": 11,
+      "name": "step_12",
+      "timestamp": "2025-11-06T22:17:47.491423",
+      "file": "outputs/20251106_221544/12_step_12.png"
+    },
+    {
+      "step": 12,
+      "name": "step_13",
+      "timestamp": "2025-11-06T22:17:47.492275",
+      "file": "outputs/20251106_221544/13_step_13.png"
+    },
+    {
+      "step": 13,
+      "name": "step_14",
+      "timestamp": "2025-11-06T22:17:47.492868",
+      "file": "outputs/20251106_221544/14_step_14.png"
+    },
+    {
+      "step": 14,
+      "name": "step_15",
+      "timestamp": "2025-11-06T22:17:47.493443",
+      "file": "outputs/20251106_221544/15_step_15.png"
+    },
+    {
+      "step": 15,
+      "name": "step_16",
+      "timestamp": "2025-11-06T22:17:47.493943",
+      "file": "outputs/20251106_221544/16_step_16.png"
+    },
+    {
+      "step": 16,
+      "name": "step_17",
+      "timestamp": "2025-11-06T22:17:47.497044",
+      "file": "outputs/20251106_221544/17_step_17.png"
+    },
+    {
+      "step": 17,
+      "name": "step_18",
+      "timestamp": "2025-11-06T22:17:47.497735",
+      "file": "outputs/20251106_221544/18_step_18.png"
+    },
+    {
+      "step": 18,
+      "name": "step_19",
+      "timestamp": "2025-11-06T22:17:47.498570",
+      "file": "outputs/20251106_221544/19_step_19.png"
+    },
+    {
+      "step": 19,
+      "name": "step_20",
+      "timestamp": "2025-11-06T22:17:47.499229",
+      "file": "outputs/20251106_221544/20_step_20.png"
+    },
+    {
+      "step": 20,
+      "name": "step_21",
+      "timestamp": "2025-11-06T22:17:47.499781",
+      "file": "outputs/20251106_221544/21_step_21.png"
+    },
+    {
+      "step": 21,
+      "name": "step_22",
+      "timestamp": "2025-11-06T22:17:47.500297",
+      "file": "outputs/20251106_221544/22_step_22.png"
+    },
+    {
+      "step": 22,
+      "name": "step_23",
+      "timestamp": "2025-11-06T22:17:47.501070",
+      "file": "outputs/20251106_221544/23_step_23.png"
+    },
+    {
+      "step": 23,
+      "name": "step_24",
+      "timestamp": "2025-11-06T22:17:47.502124",
+      "file": "outputs/20251106_221544/24_step_24.png"
+    },
+    {
+      "step": 24,
+      "name": "step_25",
+      "timestamp": "2025-11-06T22:17:47.502761",
+      "file": "outputs/20251106_221544/25_step_25.png"
+    },
+    {
+      "step": 25,
+      "name": "step_26",
+      "timestamp": "2025-11-06T22:17:47.503396",
+      "file": "outputs/20251106_221544/26_step_26.png"
+    },
+    {
+      "step": 26,
+      "name": "step_27",
+      "timestamp": "2025-11-06T22:17:47.503940",
+      "file": "outputs/20251106_221544/27_step_27.png"
+    },
+    {
+      "step": 27,
+      "name": "step_28",
+      "timestamp": "2025-11-06T22:17:47.504875",
+      "file": "outputs/20251106_221544/28_step_28.png"
+    },
+    {
+      "step": 28,
+      "name": "step_29",
+      "timestamp": "2025-11-06T22:17:47.505429",
+      "file": "outputs/20251106_221544/29_step_29.png"
+    },
+    {
+      "step": 29,
+      "name": "step_30",
+      "timestamp": "2025-11-06T22:17:47.505957",
+      "file": "outputs/20251106_221544/30_step_30.png"
+    },
+    {
+      "step": 30,
+      "name": "step_31",
+      "timestamp": "2025-11-06T22:17:47.506456",
+      "file": "outputs/20251106_221544/31_step_31.png"
+    },
+    {
+      "step": 31,
+      "name": "step_32",
+      "timestamp": "2025-11-06T22:17:47.506950",
+      "file": "outputs/20251106_221544/32_step_32.png"
+    },
+    {
+      "step": 32,
+      "name": "step_33",
+      "timestamp": "2025-11-06T22:17:47.509789",
+      "file": "outputs/20251106_221544/33_step_33.png"
+    },
+    {
+      "step": 33,
+      "name": "step_34",
+      "timestamp": "2025-11-06T22:17:47.510420",
+      "file": "outputs/20251106_221544/34_step_34.png"
+    },
+    {
+      "step": 34,
+      "name": "step_35",
+      "timestamp": "2025-11-06T22:17:47.510979",
+      "file": "outputs/20251106_221544/35_step_35.png"
+    },
+    {
+      "step": 35,
+      "name": "step_36",
+      "timestamp": "2025-11-06T22:17:47.511551",
+      "file": "outputs/20251106_221544/36_step_36.png"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_tokens": 0,
+    "total_tokens": 0
+  },
+  "cost": {
+    "estimated_cost_usd": 0.0,
+    "pricing": {
+      "input": 0.5,
+      "output": 3.0,
+      "cached": 0.1
+    }
+  },
+  "cookies_stored_in": "/Users/anishgillella/.browser-use-chrome"
+}

@@ -1,0 +1,41 @@
+{
+  "task": "Can you filter issues by medium priority in Linear",
+  "app": "Linear",
+  "executed_at": "2025-11-06T22:09:46.333905",
+  "screenshots_count": 3,
+  "screenshots": [
+    {
+      "step": 0,
+      "name": "step_1",
+      "timestamp": "2025-11-06T22:09:46.333261",
+      "file": "outputs/20251106_220935/01_step_1.png"
+    },
+    {
+      "step": 1,
+      "name": "step_2",
+      "timestamp": "2025-11-06T22:09:46.333558",
+      "file": "outputs/20251106_220935/02_step_2.png"
+    },
+    {
+      "step": 2,
+      "name": "step_3",
+      "timestamp": "2025-11-06T22:09:46.333813",
+      "file": "outputs/20251106_220935/03_step_3.png"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_tokens": 0,
+    "total_tokens": 0
+  },
+  "cost": {
+    "estimated_cost_usd": 0.0,
+    "pricing": {
+      "input": 0.5,
+      "output": 3.0,
+      "cached": 0.1
+    }
+  },
+  "cookies_stored_in": "/Users/anishgillella/.browser-use-chrome"
+}
