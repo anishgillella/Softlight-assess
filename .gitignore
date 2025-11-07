@@ -37,6 +37,7 @@ wheels/
 
 # Outputs and artifacts
 outputs/
+.cookies/
 *.log
 todo.md
 
