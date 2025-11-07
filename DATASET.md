@@ -22,7 +22,8 @@ This dataset demonstrates a generalized AI-powered system that automatically nav
 **Execution Time:** ~30 seconds
 
 **Problem Statement Alignment:**
-✅ **"How do I filter a database in [Linear]?"** - This task addresses the core problem: capturing non-URL states when filtering. The filter dropdown and filtered results are non-URL UI states that traditional tools cannot capture.
+✅ **Exact Task:** "Can you filter issues by medium priority in Linear"
+- **Core Problem:** Capturing non-URL states when filtering. The filter dropdown and filtered results are non-URL UI states that traditional tools cannot capture.
 
 **Description:**
 This task demonstrates the system's ability to navigate a Linear workspace and apply filters to find specific issues. The agent must:
@@ -54,7 +55,8 @@ This task demonstrates the system's ability to navigate a Linear workspace and a
 **Execution Time:** ~20 seconds
 
 **Problem Statement Alignment:**
-✅ **"How do I create a project in [Linear]?"** - While this creates an issue (not a project), it demonstrates the exact problem stated: capturing the create modal (no URL), form fields (no URL), and success state. These non-URL states are invisible to traditional automation but critical to document workflows.
+✅ **Exact Task:** "Create an issue in Linear called 'Authentication flow needs optimization' with description 'Reduce login time for users on slow networks'"
+- **Core Problem:** Capturing the create modal (no URL), form fields (no URL), and success state. These non-URL states are invisible to traditional automation but critical to document workflows.
 
 **Description:**
 This task shows the system creating a new issue in Linear with custom title and description. The workflow involves:
@@ -87,7 +89,8 @@ This task shows the system creating a new issue in Linear with custom title and 
 **Execution Time:** ~45 seconds
 
 **Problem Statement Alignment:**
-✅ **"How do I filter a database in [Notion]?"** (& creation) - This task captures the most complex non-URL states: database creation modal, schema definition UI, nested row-creation modals, and the rich sidebar interactions. Notion's SPA architecture makes this a perfect demonstration of why non-URL state capture is essential.
+✅ **Exact Task:** "In Notion, create a database called 'Products' with columns Name, Price, and Stock. Add one row with: Name='Laptop', Price='999', Stock='5'"
+- **Core Problem:** Captures the most complex non-URL states: database creation modal, schema definition UI, nested row-creation modals, and the rich sidebar interactions. Notion's SPA architecture makes this a perfect demonstration of why non-URL state capture is essential.
 
 **Description:**
 This is a more complex task requiring multiple interactions:
@@ -121,7 +124,8 @@ This is a more complex task requiring multiple interactions:
 **Execution Time:** ~40 seconds
 
 **Problem Statement Alignment:**
-✅ **Generalizable across different web apps** - This task demonstrates that the same system (no hardcoding) handles enterprise tools like Jira. The create form modal, dropdown selections for Status/Priority, and multi-field interactions showcase UI state capture complexity beyond URL-based approaches.
+✅ **Exact Task:** "Create a Task in Jira with Summary as 'UI rendering issue on dashboard' and Description as 'Charts are not loading properly in Chrome browser' and set Priority to High and set Status to In Progress"
+- **Core Problem:** Demonstrates that the same system (no hardcoding) handles enterprise tools like Jira. The create form modal, dropdown selections for Status/Priority, and multi-field interactions showcase UI state capture complexity beyond URL-based approaches.
 
 **Description:**
 This task creates a Jira task with specific attributes:
@@ -156,7 +160,8 @@ This task creates a Jira task with specific attributes:
 **Execution Time:** ~120 seconds (300s timeout for complex SPA)
 
 **Problem Statement Alignment:**
-✅ **"Agent B won't know these tasks ahead of time"** + **Capture non-URL states in real time** - This is the ultimate test: a task defined as natural language that wasn't hardcoded. The system must handle 2FA, navigate an unfamiliar SPA, and capture 15+ non-URL states (modals, date pickers, nested editors) without explicit instructions. This proves generalization works for complex, unknown workflows.
+✅ **Exact Task:** "In Monday.com, create a new bug item with the following details: Title='Login button not responding on mobile devices', Description='Users on iOS and Android cannot click the login button', Status='Not Started', Priority='High', add a Due Date for 2025-11-15, and assign it to yourself"
+- **Core Problem:** This is the ultimate test: a task defined as natural language that wasn't hardcoded. The system must handle 2FA, navigate an unfamiliar SPA, and capture 15+ non-URL states (modals, date pickers, nested editors) without explicit instructions. This proves generalization works for complex, unknown workflows.
 
 **Description:**
 This is the most complex task, involving creation with multiple attributes:
