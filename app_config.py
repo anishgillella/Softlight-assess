@@ -1,21 +1,23 @@
 """
-App Configuration - Define login flows and URLs for different apps
+Application Configuration
+
+Defines login flows and URLs for supported web applications.
 """
 
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict
 
 
 @dataclass
 class AppConfig:
-    """Configuration for each supported app"""
+    """Configuration for web application login and navigation"""
     name: str
     url: str
     login_url: str
-    login_email_field: str  # CSS selector for email field
-    login_password_field: str  # CSS selector for password field
-    login_button: str  # CSS selector for login button
-    mfa_wait_time: int = 15  # Seconds to wait for 2FA
+    login_email_field: str
+    login_password_field: str
+    login_button: str
+    mfa_wait_time: int = 15
 
 
 # App configurations
@@ -62,6 +64,15 @@ APPS: Dict[str, AppConfig] = {
         login_url="https://id.atlassian.com/login",
         login_email_field="input[name='email']",
         login_password_field="input[name='password']",
+        login_button="button[type='submit']",
+        mfa_wait_time=15,
+    ),
+    "monday": AppConfig(
+        name="Monday.com",
+        url="https://monday.com",
+        login_url="https://auth.monday.com/login",
+        login_email_field="input[type='email']",
+        login_password_field="input[type='password']",
         login_button="button[type='submit']",
         mfa_wait_time=15,
     ),
