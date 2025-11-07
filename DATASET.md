@@ -14,7 +14,7 @@ This dataset demonstrates a generalized AI-powered system that automatically nav
 
 ## Dataset Tasks
 
-### 1️⃣ Task: Filter Issues by Priority (Linear)
+### 1. Task: Filter Issues by Priority (Linear)
 
 **App:** Linear
 **Output Directory:** `outputs/20251106_140153/`, `outputs/20251106_140931/`, etc.
@@ -22,7 +22,7 @@ This dataset demonstrates a generalized AI-powered system that automatically nav
 **Execution Time:** ~30 seconds
 
 **Problem Statement Alignment:**
-✅ **Exact Task:** "Can you filter issues by medium priority in Linear"
+**Exact Task:** "Can you filter issues by medium priority in Linear"
 - **Core Problem:** Capturing non-URL states when filtering. The filter dropdown and filtered results are non-URL UI states that traditional tools cannot capture.
 
 **Description:**
@@ -34,11 +34,11 @@ This task demonstrates the system's ability to navigate a Linear workspace and a
 5. Capture the filtered results
 
 **UI States Captured:**
-- ✅ Login page (if needed)
-- ✅ Workspace dashboard
-- ✅ Issue list page
-- ✅ Filter dropdown/modal
-- ✅ Filtered results view
+- Login page (if needed)
+- Workspace dashboard
+- Issue list page
+- Filter dropdown/modal
+- Filtered results view
 
 **Key Insights:**
 - Demonstrates cookie persistence (no login required on subsequent runs)
@@ -47,7 +47,7 @@ This task demonstrates the system's ability to navigate a Linear workspace and a
 
 ---
 
-### 2️⃣ Task: Create Issue in Linear
+### 2. Task: Create Issue in Linear
 
 **App:** Linear
 **Output Directory:** `outputs/20251106_142015/` 
@@ -55,7 +55,7 @@ This task demonstrates the system's ability to navigate a Linear workspace and a
 **Execution Time:** ~20 seconds
 
 **Problem Statement Alignment:**
-✅ **Exact Task:** "Create an issue in Linear called 'Authentication flow needs optimization' with description 'Reduce login time for users on slow networks'"
+**Exact Task:** "Create an issue in Linear called 'Authentication flow needs optimization' with description 'Reduce login time for users on slow networks'"
 - **Core Problem:** Capturing the create modal (no URL), form fields (no URL), and success state. These non-URL states are invisible to traditional automation but critical to document workflows.
 
 **Description:**
@@ -68,11 +68,11 @@ This task shows the system creating a new issue in Linear with custom title and 
 6. Verify creation (reload page)
 
 **UI States Captured:**
-- ✅ Workspace dashboard
-- ✅ Create issue button state
-- ✅ Create issue modal (non-URL state)
-- ✅ Form fields during input
-- ✅ Success/confirmation state
+- Workspace dashboard
+- Create issue button state
+- Create issue modal (non-URL state)
+- Form fields during input
+- Success/confirmation state
 
 **Key Insights:**
 - Captures non-URL modal state during creation
@@ -81,7 +81,7 @@ This task shows the system creating a new issue in Linear with custom title and 
 
 ---
 
-### 3️⃣ Task: Create Notion Database with Columns and Entry
+### 3. Task: Create Notion Database with Columns and Entry
 
 **App:** Notion
 **Output Directory:** `outputs/20251106_141519/`
@@ -89,7 +89,7 @@ This task shows the system creating a new issue in Linear with custom title and 
 **Execution Time:** ~45 seconds
 
 **Problem Statement Alignment:**
-✅ **Exact Task:** "In Notion, create a database called 'Products' with columns Name, Price, and Stock. Add one row with: Name='Laptop', Price='999', Stock='5'"
+**Exact Task:** "In Notion, create a database called 'Products' with columns Name, Price, and Stock. Add one row with: Name='Laptop', Price='999', Stock='5'"
 - **Core Problem:** Captures the most complex non-URL states: database creation modal, schema definition UI, nested row-creation modals, and the rich sidebar interactions. Notion's SPA architecture makes this a perfect demonstration of why non-URL state capture is essential.
 
 **Description:**
@@ -101,12 +101,12 @@ This is a more complex task requiring multiple interactions:
 5. Verify persistence
 
 **UI States Captured:**
-- ✅ Notion workspace
-- ✅ Database creation modal (non-URL)
-- ✅ Schema/column definition UI
-- ✅ Database view with columns
-- ✅ Row creation/entry modal (non-URL)
-- ✅ Filled database state
+- Notion workspace
+- Database creation modal (non-URL)
+- Schema/column definition UI
+- Database view with columns
+- Row creation/entry modal (non-URL)
+- Filled database state
 
 **Key Insights:**
 - Demonstrates handling of complex SPA (Single Page Application)
@@ -116,7 +116,7 @@ This is a more complex task requiring multiple interactions:
 
 ---
 
-### 4️⃣ Task: Create Task in Jira with Multiple Attributes
+### 4. Task: Create Task in Jira with Multiple Attributes
 
 **App:** Jira
 **Output Directory:** `outputs/20251106_142015/`
@@ -124,7 +124,7 @@ This is a more complex task requiring multiple interactions:
 **Execution Time:** ~40 seconds
 
 **Problem Statement Alignment:**
-✅ **Exact Task:** "Create a Task in Jira with Summary as 'UI rendering issue on dashboard' and Description as 'Charts are not loading properly in Chrome browser' and set Priority to High and set Status to In Progress"
+**Exact Task:** "Create a Task in Jira with Summary as 'UI rendering issue on dashboard' and Description as 'Charts are not loading properly in Chrome browser' and set Priority to High and set Status to In Progress"
 - **Core Problem:** Demonstrates that the same system (no hardcoding) handles enterprise tools like Jira. The create form modal, dropdown selections for Status/Priority, and multi-field interactions showcase UI state capture complexity beyond URL-based approaches.
 
 **Description:**
@@ -138,12 +138,12 @@ This task creates a Jira task with specific attributes:
 7. Verify creation
 
 **UI States Captured:**
-- ✅ Jira login/dashboard
-- ✅ Create task form (non-URL modal)
-- ✅ Form fields during population
-- ✅ Dropdown states (Priority, Status)
-- ✅ Task detail view
-- ✅ Verification state
+- Jira login/dashboard
+- Create task form (non-URL modal)
+- Form fields during population
+- Dropdown states (Priority, Status)
+- Task detail view
+- Verification state
 
 **Key Insights:**
 - Demonstrates multi-field form handling
@@ -152,7 +152,7 @@ This task creates a Jira task with specific attributes:
 
 ---
 
-### 5️⃣ Task: Create Bug in Monday.com with All Attributes
+### 5. Task: Create Bug in Monday.com with All Attributes
 
 **App:** Monday.com
 **Output Directory:** `outputs/20251106_162931/`
@@ -160,7 +160,7 @@ This task creates a Jira task with specific attributes:
 **Execution Time:** ~120 seconds (300s timeout for complex SPA)
 
 **Problem Statement Alignment:**
-✅ **Exact Task:** "In Monday.com, create a new bug item with the following details: Title='Login button not responding on mobile devices', Description='Users on iOS and Android cannot click the login button', Status='Not Started', Priority='High', add a Due Date for 2025-11-15, and assign it to yourself"
+**Exact Task:** "In Monday.com, create a new bug item with the following details: Title='Login button not responding on mobile devices', Description='Users on iOS and Android cannot click the login button', Status='Not Started', Priority='High', add a Due Date for 2025-11-15, and assign it to yourself"
 - **Core Problem:** This is the ultimate test: a task defined as natural language that wasn't hardcoded. The system must handle 2FA, navigate an unfamiliar SPA, and capture 15+ non-URL states (modals, date pickers, nested editors) without explicit instructions. This proves generalization works for complex, unknown workflows.
 
 **Description:**
@@ -178,18 +178,18 @@ This is the most complex task, involving creation with multiple attributes:
 5. Verify all attributes are set
 
 **UI States Captured:**
-- ✅ Monday.com login page
-- ✅ 2FA wait screen (15 seconds)
-- ✅ Workspace/Home view
-- ✅ Bugs Queue board
-- ✅ Add item input field
-- ✅ Reporter picker modal (non-URL)
-- ✅ Status dropdown (non-URL)
-- ✅ Priority picker (non-URL)
-- ✅ Item detail card modal (non-URL)
-- ✅ Description/updates editor (non-URL)
-- ✅ Date picker modal (non-URL)
-- ✅ Final verified state after reload
+- Monday.com login page
+- 2FA wait screen (15 seconds)
+- Workspace/Home view
+- Bugs Queue board
+- Add item input field
+- Reporter picker modal (non-URL)
+- Status dropdown (non-URL)
+- Priority picker (non-URL)
+- Item detail card modal (non-URL)
+- Description/updates editor (non-URL)
+- Date picker modal (non-URL)
+- Final verified state after reload
 
 **Key Insights:**
 - Shows system handles complex SPAs with multiple nested modals
@@ -203,30 +203,30 @@ This is the most complex task, involving creation with multiple attributes:
 
 ## Key System Capabilities Demonstrated
 
-### ✅ Generalization
+### Generalization
 - **No hardcoding:** Tasks are provided as natural language descriptions
 - **App detection:** System automatically identifies app from task text
 - **Flexible workflows:** Agent determines the correct sequence of actions
 
-### ✅ Non-URL State Capture
+### Non-URL State Capture
 - **Modals:** Create dialogs, forms (Notion, Linear, Monday.com)
 - **Dropdowns:** Status, Priority selectors (Jira, Monday.com)
 - **Nested interactions:** Complex modal hierarchies (Monday.com)
 - **Date pickers:** Calendar widgets (Monday.com)
 - **Rich editors:** Description/updates text areas
 
-### ✅ Login & Authentication
+### Login & Authentication
 - **Automatic login:** Email and password from environment variables
 - **2FA handling:** 15-second wait for user input (Monday.com demo)
 - **Cookie persistence:** Chrome profile caching (logged-in state across runs)
 - **No re-login required:** Subsequent tasks use saved session
 
-### ✅ Screenshot & Metadata Capture
+### Screenshot & Metadata Capture
 - **Full workflow documentation:** 5-27 screenshots per task
 - **Metadata preservation:** Timestamp, app, task description in manifest.json
 - **Progressive capture:** Screenshots at each step (login → navigation → action → verification)
 
-### ✅ Cross-App Consistency
+### Cross-App Consistency
 - **Same approach for all apps:** No app-specific code in core logic
 - **Flexible UI interaction:** Uses agent reasoning instead of selectors
 - **Timeout handling:** Adjustable timeouts for app complexity (180s default, 300s for complex apps)
@@ -346,12 +346,12 @@ python task_executor.py "Create an issue in Linear called 'Authentication flow n
 
 This dataset demonstrates a **generalizable, UI-state-aware automation system** that:
 
-✅ Works across different web applications  
-✅ Captures non-URL UI states (modals, forms, dropdowns)  
-✅ Requires no hardcoding per app  
-✅ Handles complex workflows (multi-step, nested interactions)  
-✅ Integrates authentication and cookie persistence  
-✅ Provides complete visual documentation of workflows  
+- Works across different web applications  
+- Captures non-URL UI states (modals, forms, dropdowns)  
+- Requires no hardcoding per app  
+- Handles complex workflows (multi-step, nested interactions)  
+- Integrates authentication and cookie persistence  
+- Provides complete visual documentation of workflows  
 
 **The system proves that intelligent web automation is possible without brittle, app-specific code.**
 
@@ -368,7 +368,7 @@ This dataset demonstrates a **generalizable, UI-state-aware automation system** 
 | Login Flows Captured | 2 (Linear, Monday.com) |
 | Non-URL States | 15+ |
 | Execution Time (Total) | ~5-10 minutes |
-| Cookie Persistence | ✅ Enabled |
-| 2FA Handling | ✅ Supported |
+| Cookie Persistence | Enabled |
+| 2FA Handling | Supported |
 | Generalization Score | 100% (no hardcoding) |
 
