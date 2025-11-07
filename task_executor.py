@@ -41,8 +41,11 @@ logger = logging.getLogger(__name__)
 class TaskExecutor:
     """Execute tasks on any web app with automatic login and screenshot capture"""
 
-    def __init__(self, email: str = "anish.gillella@gmail.com", headless: bool = False):
-        self.email = email
+    def __init__(self, email: str = None, headless: bool = False):
+        # Use environment variable for email, with fallback to parameter
+        self.email = email or os.getenv("EMAIL", "")
+        if not self.email:
+            raise ValueError("Email must be provided via EMAIL environment variable or parameter")
         self.headless = headless
         self.password = os.getenv("PASSWORD", "")
         self.screenshots: List[dict] = []
@@ -320,13 +323,14 @@ class TaskExecutor:
             sys.exit(0)
 
 
-async def run_task(task_input: str, headless: bool = False) -> Dict:
+async def run_task(task_input: str, headless: bool = False, email: str = None) -> Dict:
     """
     Main entry point - detects app and executes task
     
     Args:
         task_input: Task description (e.g., "Create a database in Notion")
         headless: Whether to run browser in headless mode
+        email: User email (optional, defaults to EMAIL env var)
     
     Returns:
         Execution result dictionary with status and details
@@ -341,7 +345,7 @@ async def run_task(task_input: str, headless: bool = False) -> Dict:
     
     logger.info(f"Detected app: {app_key.upper()}")
     
-    executor = TaskExecutor(headless=headless)
+    executor = TaskExecutor(email=email, headless=headless)
     return await executor.execute_task(app_key, task_input)
 
 
