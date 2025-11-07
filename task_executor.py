@@ -23,6 +23,13 @@ from browser_use.llm import ChatBrowserUse
 # Load environment variables
 load_dotenv()
 
+# Token pricing (per 1M tokens)
+TOKEN_PRICING = {
+    "input": 0.50,      # $0.50 per 1M input tokens
+    "output": 3.00,     # $3.00 per 1M output tokens
+    "cached": 0.10,     # $0.10 per 1M cached tokens
+}
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -46,6 +53,61 @@ class TaskExecutor:
         # Chrome configuration for persistent cookies
         self.chrome_user_data_dir = Path.home() / ".browser-use-chrome"
         self.chrome_user_data_dir.mkdir(exist_ok=True)
+        
+        # Token and cost tracking
+        self.token_usage = {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_tokens": 0,
+        }
+        self.total_cost = 0.0
+    
+    def calculate_cost(self, input_tokens: int = 0, output_tokens: int = 0, cached_tokens: int = 0) -> float:
+        """Calculate cost based on token usage"""
+        cost = (
+            (input_tokens / 1_000_000) * TOKEN_PRICING["input"] +
+            (output_tokens / 1_000_000) * TOKEN_PRICING["output"] +
+            (cached_tokens / 1_000_000) * TOKEN_PRICING["cached"]
+        )
+        return cost
+    
+    def update_token_usage(self, history) -> Dict:
+        """Extract and update token usage from agent history"""
+        token_data = {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_tokens": 0,
+            "total_tokens": 0,
+            "estimated_cost": 0.0,
+        }
+        
+        try:
+            # Try to get usage from history
+            if history and hasattr(history, 'usage'):
+                usage = history.usage
+                if usage:
+                    input_tokens = getattr(usage, 'input_tokens', 0)
+                    output_tokens = getattr(usage, 'output_tokens', 0)
+                    cached_tokens = getattr(usage, 'cache_read_input_tokens', 0)
+                    
+                    token_data["input_tokens"] = input_tokens
+                    token_data["output_tokens"] = output_tokens
+                    token_data["cached_tokens"] = cached_tokens
+                    token_data["total_tokens"] = input_tokens + output_tokens + cached_tokens
+                    token_data["estimated_cost"] = self.calculate_cost(input_tokens, output_tokens, cached_tokens)
+                    
+                    # Update instance totals
+                    self.token_usage["input_tokens"] += input_tokens
+                    self.token_usage["output_tokens"] += output_tokens
+                    self.token_usage["cached_tokens"] += cached_tokens
+                    self.total_cost += token_data["estimated_cost"]
+                    
+                    logger.info(f"Token usage - Input: {input_tokens}, Output: {output_tokens}, Cached: {cached_tokens}")
+                    logger.info(f"Estimated cost for this run: ${token_data['estimated_cost']:.4f}")
+        except Exception as e:
+            logger.warning(f"Could not extract token usage: {e}")
+        
+        return token_data
 
 
     async def capture_screenshot(self, page, step_name: str) -> bool:
@@ -108,8 +170,13 @@ class TaskExecutor:
             # Build agent prompt (Chrome handles cookies automatically)
             agent_prompt = self._build_agent_prompt(app_config, task)
             
-            # Create and run agent
-            agent = Agent(task=agent_prompt, llm=ChatBrowserUse(), browser_session=browser)
+            # Create and run agent with cost tracking enabled
+            agent = Agent(
+                task=agent_prompt,
+                llm=ChatBrowserUse(),
+                browser_session=browser,
+                calculate_cost=True  # Enable cost tracking
+            )
             
             # Set timeout based on app complexity
             timeout_seconds = 300.0 if app_key in ["monday"] else 180.0
@@ -119,6 +186,9 @@ class TaskExecutor:
                 history = await asyncio.wait_for(agent.run(), timeout=timeout_seconds)
             except asyncio.TimeoutError:
                 logger.warning(f"Agent execution timeout ({timeout_seconds} seconds)")
+            
+            # Extract token usage and calculate cost
+            token_data = self.update_token_usage(history)
             
             # Extract and save screenshots from agent history (even on timeout)
             if history and hasattr(history, 'screenshots'):
@@ -164,7 +234,7 @@ class TaskExecutor:
             # Capture final screenshot (Chrome automatically saves cookies to user_data_dir)
             await self.capture_screenshot(page, "final_state")
             
-            # Save manifest
+            # Save manifest with token usage and cost
             manifest_file = self.output_dir / "manifest.json"
             with open(manifest_file, 'w') as f:
                 json.dump({
@@ -173,11 +243,25 @@ class TaskExecutor:
                     "executed_at": datetime.now().isoformat(),
                     "screenshots_count": len(self.screenshots),
                     "screenshots": self.screenshots,
+                    "token_usage": {
+                        "input_tokens": token_data.get("input_tokens", 0),
+                        "output_tokens": token_data.get("output_tokens", 0),
+                        "cached_tokens": token_data.get("cached_tokens", 0),
+                        "total_tokens": token_data.get("total_tokens", 0),
+                    },
+                    "cost": {
+                        "estimated_cost_usd": round(token_data.get("estimated_cost", 0.0), 4),
+                        "pricing": TOKEN_PRICING,
+                    },
                     "cookies_stored_in": str(self.chrome_user_data_dir),
                 }, f, indent=2)
             
             logger.info(f"Task completed. Captured {len(self.screenshots)} screenshots")
             logger.info(f"Cookies automatically saved to: {self.chrome_user_data_dir}")
+            logger.info(f"💰 Cost Summary: ${token_data.get('estimated_cost', 0.0):.4f} USD")
+            logger.info(f"   Input tokens: {token_data.get('input_tokens', 0)}")
+            logger.info(f"   Output tokens: {token_data.get('output_tokens', 0)}")
+            logger.info(f"   Cached tokens: {token_data.get('cached_tokens', 0)}")
             
             return {
                 "status": "success",
@@ -186,6 +270,8 @@ class TaskExecutor:
                 "output_dir": str(self.output_dir),
                 "manifest": str(manifest_file),
                 "chrome_profile": str(self.chrome_user_data_dir),
+                "token_usage": token_data,
+                "estimated_cost_usd": round(token_data.get("estimated_cost", 0.0), 4),
             }
 
         except Exception as e:
