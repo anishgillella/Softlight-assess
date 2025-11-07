@@ -1,0 +1,77 @@
+{
+  "task": "Create a Task in Jira with Summary as 'UI rendering issue on dashboard' and Description as 'Charts are not loading properly in Chrome browser' and set Priority to High and set Status to In Progress",
+  "app": "Jira",
+  "executed_at": "2025-11-06T22:00:00.185676",
+  "screenshots_count": 9,
+  "screenshots": [
+    {
+      "step": 0,
+      "name": "step_1",
+      "timestamp": "2025-11-06T22:00:00.180435",
+      "file": "outputs/20251106_215930/01_step_1.png"
+    },
+    {
+      "step": 1,
+      "name": "step_2",
+      "timestamp": "2025-11-06T22:00:00.180808",
+      "file": "outputs/20251106_215930/02_step_2.png"
+    },
+    {
+      "step": 2,
+      "name": "step_3",
+      "timestamp": "2025-11-06T22:00:00.181226",
+      "file": "outputs/20251106_215930/03_step_3.png"
+    },
+    {
+      "step": 3,
+      "name": "step_4",
+      "timestamp": "2025-11-06T22:00:00.181902",
+      "file": "outputs/20251106_215930/04_step_4.png"
+    },
+    {
+      "step": 4,
+      "name": "step_5",
+      "timestamp": "2025-11-06T22:00:00.182585",
+      "file": "outputs/20251106_215930/05_step_5.png"
+    },
+    {
+      "step": 5,
+      "name": "step_6",
+      "timestamp": "2025-11-06T22:00:00.183101",
+      "file": "outputs/20251106_215930/06_step_6.png"
+    },
+    {
+      "step": 6,
+      "name": "step_7",
+      "timestamp": "2025-11-06T22:00:00.184029",
+      "file": "outputs/20251106_215930/07_step_7.png"
+    },
+    {
+      "step": 7,
+      "name": "step_8",
+      "timestamp": "2025-11-06T22:00:00.184918",
+      "file": "outputs/20251106_215930/08_step_8.png"
+    },
+    {
+      "step": 8,
+      "name": "step_9",
+      "timestamp": "2025-11-06T22:00:00.185473",
+      "file": "outputs/20251106_215930/09_step_9.png"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_tokens": 0,
+    "total_tokens": 0
+  },
+  "cost": {
+    "estimated_cost_usd": 0.0,
+    "pricing": {
+      "input": 0.5,
+      "output": 3.0,
+      "cached": 0.1
+    }
+  },
+  "cookies_stored_in": "/Users/anishgillella/.browser-use-chrome"
+}

@@ -1,0 +1,167 @@
+{
+  "task": "Create a Task in Jira with Summary as 'UI rendering issue on dashboard' and Description as 'Charts are not loading properly in Chrome browser' and set Priority to High and set Status to In Progress",
+  "app": "Jira",
+  "executed_at": "2025-11-06T21:56:20.410286",
+  "screenshots_count": 24,
+  "screenshots": [
+    {
+      "step": 0,
+      "name": "step_1",
+      "timestamp": "2025-11-06T21:56:20.398796",
+      "file": "outputs/20251106_215449/01_step_1.png"
+    },
+    {
+      "step": 1,
+      "name": "step_2",
+      "timestamp": "2025-11-06T21:56:20.399386",
+      "file": "outputs/20251106_215449/02_step_2.png"
+    },
+    {
+      "step": 2,
+      "name": "step_3",
+      "timestamp": "2025-11-06T21:56:20.399805",
+      "file": "outputs/20251106_215449/03_step_3.png"
+    },
+    {
+      "step": 3,
+      "name": "step_4",
+      "timestamp": "2025-11-06T21:56:20.400171",
+      "file": "outputs/20251106_215449/04_step_4.png"
+    },
+    {
+      "step": 4,
+      "name": "step_5",
+      "timestamp": "2025-11-06T21:56:20.400563",
+      "file": "outputs/20251106_215449/05_step_5.png"
+    },
+    {
+      "step": 5,
+      "name": "step_6",
+      "timestamp": "2025-11-06T21:56:20.400743",
+      "file": "outputs/20251106_215449/06_step_6.png"
+    },
+    {
+      "step": 6,
+      "name": "step_7",
+      "timestamp": "2025-11-06T21:56:20.401070",
+      "file": "outputs/20251106_215449/07_step_7.png"
+    },
+    {
+      "step": 7,
+      "name": "step_8",
+      "timestamp": "2025-11-06T21:56:20.401407",
+      "file": "outputs/20251106_215449/08_step_8.png"
+    },
+    {
+      "step": 8,
+      "name": "step_9",
+      "timestamp": "2025-11-06T21:56:20.401546",
+      "file": "outputs/20251106_215449/09_step_9.png"
+    },
+    {
+      "step": 9,
+      "name": "step_10",
+      "timestamp": "2025-11-06T21:56:20.401862",
+      "file": "outputs/20251106_215449/10_step_10.png"
+    },
+    {
+      "step": 10,
+      "name": "step_11",
+      "timestamp": "2025-11-06T21:56:20.402604",
+      "file": "outputs/20251106_215449/11_step_11.png"
+    },
+    {
+      "step": 11,
+      "name": "step_12",
+      "timestamp": "2025-11-06T21:56:20.403068",
+      "file": "outputs/20251106_215449/12_step_12.png"
+    },
+    {
+      "step": 12,
+      "name": "step_13",
+      "timestamp": "2025-11-06T21:56:20.404025",
+      "file": "outputs/20251106_215449/13_step_13.png"
+    },
+    {
+      "step": 13,
+      "name": "step_14",
+      "timestamp": "2025-11-06T21:56:20.404235",
+      "file": "outputs/20251106_215449/14_step_14.png"
+    },
+    {
+      "step": 14,
+      "name": "step_15",
+      "timestamp": "2025-11-06T21:56:20.404588",
+      "file": "outputs/20251106_215449/15_step_15.png"
+    },
+    {
+      "step": 15,
+      "name": "step_16",
+      "timestamp": "2025-11-06T21:56:20.405142",
+      "file": "outputs/20251106_215449/16_step_16.png"
+    },
+    {
+      "step": 16,
+      "name": "step_17",
+      "timestamp": "2025-11-06T21:56:20.405534",
+      "file": "outputs/20251106_215449/17_step_17.png"
+    },
+    {
+      "step": 17,
+      "name": "step_18",
+      "timestamp": "2025-11-06T21:56:20.405985",
+      "file": "outputs/20251106_215449/18_step_18.png"
+    },
+    {
+      "step": 18,
+      "name": "step_19",
+      "timestamp": "2025-11-06T21:56:20.406381",
+      "file": "outputs/20251106_215449/19_step_19.png"
+    },
+    {
+      "step": 19,
+      "name": "step_20",
+      "timestamp": "2025-11-06T21:56:20.406838",
+      "file": "outputs/20251106_215449/20_step_20.png"
+    },
+    {
+      "step": 20,
+      "name": "step_21",
+      "timestamp": "2025-11-06T21:56:20.406996",
+      "file": "outputs/20251106_215449/21_step_21.png"
+    },
+    {
+      "step": 21,
+      "name": "step_22",
+      "timestamp": "2025-11-06T21:56:20.407674",
+      "file": "outputs/20251106_215449/22_step_22.png"
+    },
+    {
+      "step": 22,
+      "name": "step_23",
+      "timestamp": "2025-11-06T21:56:20.409920",
+      "file": "outputs/20251106_215449/23_step_23.png"
+    },
+    {
+      "step": 23,
+      "name": "step_24",
+      "timestamp": "2025-11-06T21:56:20.410134",
+      "file": "outputs/20251106_215449/24_step_24.png"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_tokens": 0,
+    "total_tokens": 0
+  },
+  "cost": {
+    "estimated_cost_usd": 0.0,
+    "pricing": {
+      "input": 0.5,
+      "output": 3.0,
+      "cached": 0.1
+    }
+  },
+  "cookies_stored_in": "/Users/anishgillella/.browser-use-chrome"
+}
