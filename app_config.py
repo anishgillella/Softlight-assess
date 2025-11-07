@@ -60,7 +60,7 @@ APPS: Dict[str, AppConfig] = {
     ),
     "jira": AppConfig(
         name="Jira",
-        url="https://www.atlassian.com/software/jira",
+        url="https://anishgillella-1762467497720.atlassian.net",  # Direct workspace URL
         login_url="https://id.atlassian.com/login",
         login_email_field="input[name='email']",
         login_password_field="input[name='password']",
