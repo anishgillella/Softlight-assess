@@ -71,39 +71,72 @@ class TaskExecutor:
         )
         return cost
     
-    def update_token_usage(self, history) -> Dict:
-        """Extract and update token usage from agent history"""
+    def update_token_usage(self, history, agent=None) -> Dict:
+        """Extract and update token usage from agent history or LLM"""
         token_data = {
             "input_tokens": 0,
             "output_tokens": 0,
             "cached_tokens": 0,
             "total_tokens": 0,
             "estimated_cost": 0.0,
+            "source": "unknown",
         }
         
         try:
-            # Try to get usage from history
+            input_tokens = 0
+            output_tokens = 0
+            cached_tokens = 0
+            
+            # Try to get usage from history.usage
             if history and hasattr(history, 'usage'):
                 usage = history.usage
                 if usage:
                     input_tokens = getattr(usage, 'input_tokens', 0)
                     output_tokens = getattr(usage, 'output_tokens', 0)
                     cached_tokens = getattr(usage, 'cache_read_input_tokens', 0)
-                    
-                    token_data["input_tokens"] = input_tokens
-                    token_data["output_tokens"] = output_tokens
-                    token_data["cached_tokens"] = cached_tokens
-                    token_data["total_tokens"] = input_tokens + output_tokens + cached_tokens
-                    token_data["estimated_cost"] = self.calculate_cost(input_tokens, output_tokens, cached_tokens)
-                    
-                    # Update instance totals
-                    self.token_usage["input_tokens"] += input_tokens
-                    self.token_usage["output_tokens"] += output_tokens
-                    self.token_usage["cached_tokens"] += cached_tokens
-                    self.total_cost += token_data["estimated_cost"]
-                    
-                    logger.info(f"Token usage - Input: {input_tokens}, Output: {output_tokens}, Cached: {cached_tokens}")
-                    logger.info(f"Estimated cost for this run: ${token_data['estimated_cost']:.4f}")
+                    token_data["source"] = "history.usage"
+                    logger.info(f"Token usage from history.usage")
+            
+            # Try to get from agent's LLM service
+            if not input_tokens and agent and hasattr(agent, 'llm'):
+                llm = agent.llm
+                if hasattr(llm, 'token_counter'):
+                    counter = llm.token_counter
+                    if hasattr(counter, 'input_tokens'):
+                        input_tokens = counter.input_tokens
+                        output_tokens = getattr(counter, 'output_tokens', 0)
+                        cached_tokens = getattr(counter, 'cached_tokens', 0)
+                        token_data["source"] = "agent.llm.token_counter"
+                        logger.info(f"Token usage from agent LLM counter")
+            
+            # Try to get from agent stats if available
+            if not input_tokens and agent and hasattr(agent, 'stats'):
+                stats = agent.stats
+                input_tokens = getattr(stats, 'input_tokens', 0)
+                output_tokens = getattr(stats, 'output_tokens', 0)
+                cached_tokens = getattr(stats, 'cached_tokens', 0)
+                token_data["source"] = "agent.stats"
+                logger.info(f"Token usage from agent stats")
+            
+            # Update token data
+            if input_tokens or output_tokens or cached_tokens:
+                token_data["input_tokens"] = input_tokens
+                token_data["output_tokens"] = output_tokens
+                token_data["cached_tokens"] = cached_tokens
+                token_data["total_tokens"] = input_tokens + output_tokens + cached_tokens
+                token_data["estimated_cost"] = self.calculate_cost(input_tokens, output_tokens, cached_tokens)
+                
+                # Update instance totals
+                self.token_usage["input_tokens"] += input_tokens
+                self.token_usage["output_tokens"] += output_tokens
+                self.token_usage["cached_tokens"] += cached_tokens
+                self.total_cost += token_data["estimated_cost"]
+                
+                logger.info(f"Token usage - Input: {input_tokens}, Output: {output_tokens}, Cached: {cached_tokens} (from {token_data['source']})")
+                logger.info(f"Estimated cost for this run: ${token_data['estimated_cost']:.4f}")
+            else:
+                logger.info(f"⚠️ Token usage not available from browser-use history (may be cached/optimized request)")
+                
         except Exception as e:
             logger.warning(f"Could not extract token usage: {e}")
         
@@ -188,7 +221,7 @@ class TaskExecutor:
                 logger.warning(f"Agent execution timeout ({timeout_seconds} seconds)")
             
             # Extract token usage and calculate cost
-            token_data = self.update_token_usage(history)
+            token_data = self.update_token_usage(history, agent)
             
             # Extract and save screenshots from agent history (even on timeout)
             if history and hasattr(history, 'screenshots'):
