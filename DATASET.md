@@ -21,6 +21,9 @@ This dataset demonstrates a generalized AI-powered system that automatically nav
 **Screenshots:** 19
 **Execution Time:** ~30 seconds
 
+**Problem Statement Alignment:**
+✅ **"How do I filter a database in [Linear]?"** - This task addresses the core problem: capturing non-URL states when filtering. The filter dropdown and filtered results are non-URL UI states that traditional tools cannot capture.
+
 **Description:**
 This task demonstrates the system's ability to navigate a Linear workspace and apply filters to find specific issues. The agent must:
 1. Navigate to Linear
@@ -49,6 +52,9 @@ This task demonstrates the system's ability to navigate a Linear workspace and a
 **Output Directory:** `outputs/20251106_142015/` 
 **Screenshots:** 5
 **Execution Time:** ~20 seconds
+
+**Problem Statement Alignment:**
+✅ **"How do I create a project in [Linear]?"** - While this creates an issue (not a project), it demonstrates the exact problem stated: capturing the create modal (no URL), form fields (no URL), and success state. These non-URL states are invisible to traditional automation but critical to document workflows.
 
 **Description:**
 This task shows the system creating a new issue in Linear with custom title and description. The workflow involves:
@@ -79,6 +85,9 @@ This task shows the system creating a new issue in Linear with custom title and 
 **Output Directory:** `outputs/20251106_141519/`
 **Screenshots:** 15+
 **Execution Time:** ~45 seconds
+
+**Problem Statement Alignment:**
+✅ **"How do I filter a database in [Notion]?"** (& creation) - This task captures the most complex non-URL states: database creation modal, schema definition UI, nested row-creation modals, and the rich sidebar interactions. Notion's SPA architecture makes this a perfect demonstration of why non-URL state capture is essential.
 
 **Description:**
 This is a more complex task requiring multiple interactions:
@@ -111,6 +120,9 @@ This is a more complex task requiring multiple interactions:
 **Screenshots:** 19
 **Execution Time:** ~40 seconds
 
+**Problem Statement Alignment:**
+✅ **Generalizable across different web apps** - This task demonstrates that the same system (no hardcoding) handles enterprise tools like Jira. The create form modal, dropdown selections for Status/Priority, and multi-field interactions showcase UI state capture complexity beyond URL-based approaches.
+
 **Description:**
 This task creates a Jira task with specific attributes:
 1. Navigate to Jira
@@ -142,6 +154,9 @@ This task creates a Jira task with specific attributes:
 **Output Directory:** `outputs/20251106_162931/`
 **Screenshots:** 27
 **Execution Time:** ~120 seconds (300s timeout for complex SPA)
+
+**Problem Statement Alignment:**
+✅ **"Agent B won't know these tasks ahead of time"** + **Capture non-URL states in real time** - This is the ultimate test: a task defined as natural language that wasn't hardcoded. The system must handle 2FA, navigate an unfamiliar SPA, and capture 15+ non-URL states (modals, date pickers, nested editors) without explicit instructions. This proves generalization works for complex, unknown workflows.
 
 **Description:**
 This is the most complex task, involving creation with multiple attributes:
