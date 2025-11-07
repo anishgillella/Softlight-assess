@@ -4,25 +4,25 @@ A generalized AI-powered system that automatically navigates web applications, h
 
 ## Features
 
-✨ **Generalized Task Execution**
+**Generalized Task Execution**
 - Works with any web app (Notion, Linear, Asana, GitHub, etc.)
 - Automatically detects which app from task input
 - No hardcoded workflows per app
 
-🔐 **Smart Login Handling**
+**Smart Login Handling**
 - Enters email automatically
 - Waits 15 seconds for user to enter 2FA code
 - Periodically checks if login form is fully filled
 - Continues execution after successful login
 
-📸 **UI State Capture**
+**UI State Capture**
 - Captures screenshots at each step
 - Stores screenshots with metadata
 - Generates JSON manifest with task details
 - Organized output directory per task
 
-🤖 **Powered by Browser Use & LLM**
-- Uses browser-use 0.8.0 for AI-driven browser automation
+**Powered by Browser Use & LLM**
+- Uses browser-use 0.9.5 for AI-driven browser automation
 - ChatBrowserUse LLM for intelligent task execution
 - Parallel execution potential (ready for future enhancements)
 
@@ -61,14 +61,20 @@ cd edinburgh
 pip install -r requirements.txt
 ```
 
-### 3. Set up Browser Use API key
+### 3. Set up environment variables
 
-Create a `.env` file in the project root:
+Copy `.env.example` to `.env` and fill in your credentials:
 ```bash
-BROWSER_USE_API_KEY=your_api_key_here
+cp .env.example .env
 ```
 
-Get your API key from: https://cloud.browser-use.com
+Edit `.env` with your credentials:
+```
+EMAIL=your-email@example.com
+PASSWORD=your-secure-password
+BROWSER_USE_API_KEY=your_api_key_here (optional)
+HEADLESS=false (optional, default: false)
+```
 
 ### 4. Install Playwright browsers
 ```bash
@@ -81,12 +87,12 @@ playwright install
 
 The system currently supports:
 
-| App | URL | Login URL |
-|-----|-----|-----------|
-| Notion | https://www.notion.so | https://www.notion.so/login |
-| Linear | https://linear.app | https://linear.app/login |
-| Asana | https://app.asana.com | https://app.asana.com/-/login |
-| GitHub | https://github.com | https://github.com/login |
+| App | URL | Config |
+|-----|-----|--------|
+| Notion | https://www.notion.so | AppConfig in app_config.py |
+| Linear | https://linear.app | AppConfig in app_config.py |
+| Jira | https://atlassian.net | AppConfig in app_config.py |
+| Monday.com | https://monday.com | AppConfig in app_config.py |
 
 ### Customizing App Config
 
@@ -108,46 +114,9 @@ APPS: Dict[str, AppConfig] = {
 
 ## Usage
 
-### Interactive Mode (Recommended)
-
-Run the interactive orchestrator:
-
-```bash
-python main.py
-```
-
-This launches an interactive interface where you can:
-- Enter tasks one by one
-- View task history
-- Execute multiple tasks sequentially
-- See results and captured screenshots
-
-### Example Workflow
-
-```
-🎯 UI STATE CAPTURE SYSTEM
-Enter Your Task
-👉 Enter task (or 'quit' to exit): Create a database in Notion
-
-[Browser opens and logs in automatically]
-[15 seconds for you to enter 2FA code]
-[Task executes and captures UI states]
-
-📊 TASK RESULT
-✅ Status: SUCCESS
-📸 Screenshots: 4
-📁 Output Directory: ./outputs/20241106_143022/
-📋 Manifest: ./outputs/20241106_143022/manifest.json
-
-What next?
-  [1] Run another task
-  [2] View history
-  [3] Exit
-```
-
 ### Command Line Mode
 
-Run a single task directly:
+Run a task directly:
 
 ```bash
 python task_executor.py "Create a database in Notion"
@@ -162,13 +131,13 @@ python task_executor.py "Create a database in Notion"
 
 # Linear
 "Create a new project in Linear"
-"Create an issue with high priority in Linear"
+"Filter issues by high priority in Linear"
 
-# Asana
-"Add a new task to my project in Asana"
+# Jira
+"Create a task with summary and priority in Jira"
 
-# GitHub
-"Create a new issue in the browser-use repository"
+# Monday.com
+"Create a bug with status and priority in Monday"
 ```
 
 ### Programmatic Usage
@@ -193,11 +162,10 @@ Each task generates an output directory:
 
 ```
 outputs/
-├── 20241106_143022/
-│   ├── 00_logged_in.png
-│   ├── 01_task_step_0.png
-│   ├── 02_task_step_1.png
-│   ├── 03_final_state.png
+├── 20251106_143022/
+│   ├── 01_step_1.png
+│   ├── 02_step_2.png
+│   ├── 03_step_3.png
 │   └── manifest.json
 ```
 
@@ -207,36 +175,41 @@ outputs/
 {
   "task": "Create a database in Notion",
   "app": "Notion",
-  "email": "anishgillella@gmail.com",
-  "executed_at": "2024-11-06T14:30:22.123456",
+  "executed_at": "2025-11-06T14:30:22.123456",
+  "screenshots_count": 5,
   "screenshots": [
     {
-      "step": 0,
-      "name": "logged_in",
-      "timestamp": "2024-11-06T14:30:22.123456",
-      "file": "outputs/20241106_143022/00_logged_in.png"
+      "step": 1,
+      "file": "01_step_1.png"
     },
     {
-      "step": 1,
-      "name": "task_step_0",
-      "timestamp": "2024-11-06T14:30:25.234567",
-      "file": "outputs/20241106_143022/01_task_step_0.png"
+      "step": 2,
+      "file": "02_step_2.png"
     }
-  ]
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_tokens": 0
+  },
+  "cost": {
+    "estimated_cost_usd": 0.0
+  },
+  "cookies_stored_in": "/Users/you/.browser-use-chrome"
 }
 ```
 
 ## How It Works
 
 ### 1. App Detection
-The system scans your task input for known app names (notion, linear, asana, github).
+The system scans your task input for known app names (notion, linear, jira, monday).
 
 ### 2. Login Flow
 - **Navigate**: Goes to the app's login page
-- **Email Entry**: Fills in the email field automatically
-- **Form Validation**: Periodically checks if password field is filled
+- **Email Entry**: Fills in email from environment variable
+- **Password Entry**: Fills in password from environment variable
 - **2FA Wait**: Waits up to 15 seconds for user to enter 2FA code
-- **Continuation**: Automatically continues once form is complete
+- **Cookie Persistence**: Saves browser profile for future logins
 
 ### 3. Task Execution
 - The browser-use Agent reads your task
@@ -245,47 +218,70 @@ The system scans your task input for known app names (notion, linear, asana, git
 - Captures the UI state at each step
 
 ### 4. Screenshot Capture
-- Captures screenshots before login
 - Captures screenshots during task execution
-- Captures final state screenshot
-- Stores all with metadata in manifest
+- Extracts all steps from agent history
+- Generates manifest.json with metadata
+- Supports 100+ non-URL UI states (modals, forms, dropdowns)
+
+### 5. Cookie Management
+- Browser profiles stored in: `~/.browser-use-chrome/`
+- Automatic cookie persistence across runs
+- No re-login required for subsequent tasks
+- Session data preserved between executions
 
 ## Troubleshooting
 
-### "Browser page not accessible"
-- Make sure BROWSER_USE_API_KEY is set in .env
-- Try increasing the `await asyncio.sleep(2)` in execute_task method
+### "Email must be provided via EMAIL environment variable"
+- Make sure you have EMAIL set in .env file
+- Run: `echo $EMAIL` to verify it's exported
 
 ### "No app detected in task"
-- Make sure your task mentions an app name (notion, linear, asana, github)
-- Example: ✅ "Create a database in Notion"
-- Example: ❌ "Create a database"
+- Make sure your task mentions an app name (notion, linear, jira, monday)
+- Example: "Create a database in Notion" (correct)
+- Example: "Create a database" (incorrect - missing app name)
 
 ### Login fails
-- Check that email is correct in task_executor.py: `TaskExecutor(email="...")`
-- Make sure you're entering the correct 2FA code
-- Some apps may have different login flows - update selectors in app_config.py
+- Check that EMAIL and PASSWORD are correct in .env
+- Make sure you're entering the 2FA code within 15 seconds
+- Verify network connection if timeout occurs
+- Try clearing browser cache: `rm -rf ~/.browser-use-chrome/`
 
-### Screenshots are blank
-- The app might require additional wait time
-- Try clicking a button first to ensure page is interactive
-- Check if the page selector `.screenshot()` is working
+### Screenshots are blank or missing
+- Increase wait time if page is slow to load
+- Check browser console for JavaScript errors
+- Verify task is complex enough to generate multiple states
 
-## Architecture Design
+## Environment Variables
 
-See `ARCHITECTURE.md` for details on:
-- Current v1 architecture (sequential)
-- Proposed v2 architecture (parallel planning + execution)
-- Why this approach is generalizable
-- Implementation roadmap
+Create a `.env` file with:
+
+```
+# Required
+EMAIL=your-email@example.com
+PASSWORD=your-password
+
+# Optional
+BROWSER_USE_API_KEY=your-api-key
+HEADLESS=false
+LOG_LEVEL=INFO
+```
+
+**Security Note**: Never commit `.env` to git. The file is already in `.gitignore`.
+
+## Dataset & Demonstration
+
+See `DATASET.md` for:
+- 5 complete task examples with 100+ screenshots
+- Problem statement alignment for each task
+- Non-URL state capture demonstrations
+- Cross-app generalization proof
 
 ## Next Steps
 
-- [ ] Test on 5+ different tasks
-- [ ] Create Loom demonstration video
-- [ ] Add caching for repeated tasks
-- [ ] Implement parallel LLM planner (v2 architecture)
-- [ ] Support more apps (Jira, Trello, Slack, etc.)
+- Test on additional apps (Asana, GitHub, Slack)
+- Add support for more complex interactions
+- Implement parallel execution for multiple tasks
+- Expand to API-based automation
 
 ## Contributing
 
@@ -298,4 +294,3 @@ To add a new app:
 ## License
 
 MIT
-
