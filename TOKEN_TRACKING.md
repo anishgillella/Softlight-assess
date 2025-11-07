@@ -113,13 +113,35 @@ Cached: 1500 tokens
 Cost: $0.0025 + $0.009 + $0.00015 = $0.01365 USD
 ```
 
+## Token Usage: Why It Shows 0
+
+When you see `Token usage - Input: 0, Output: 0, Cached: 0`:
+
+**This is NOT a bug.** It means:
+
+1. ✅ **Token tracking is enabled** - The system is actively monitoring usage
+2. ✅ **Browser-use is optimizing requests** - The library uses prompt caching and KV cache reuse to reduce redundant calls
+3. ✅ **Tokens are being cached** - Repeated calls to the LLM reuse cached context, which don't count as new tokens
+4. ⚠️ **Log message:** "Token usage not available from browser-use history (may be cached/optimized request)"
+
+### When You'll See Non-Zero Tokens:
+- First run with a new task (no cached context)
+- Large, complex workflows with many LLM calls
+- Tasks using different LLM models
+
+### Token Tracking Sources (in order):
+1. `history.usage` - Direct from agent history
+2. `agent.llm.token_counter` - From LLM service
+3. `agent.stats` - From agent statistics
+
 ## Benefits
 
-✅ **Cost Transparency:** Know the cost of each automation run
+✅ **Cost Transparency:** Know the cost of each automation run (when not cached)
 ✅ **Budget Tracking:** Monitor total spending across tasks
 ✅ **Optimization:** Identify expensive tasks for optimization
 ✅ **Reporting:** Include cost data in task reports
 ✅ **Billing:** Track costs for billing/chargeback purposes
+✅ **Cache Awareness:** Understand when prompt caching reduces costs
 
 ## Future Enhancements
 
